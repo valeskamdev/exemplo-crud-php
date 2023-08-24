@@ -1,6 +1,4 @@
 <?php
-
-global $conexao;
 require_once "conecta.php";
 
 // Usada em fabricantes/visuzlizar.php
@@ -21,6 +19,3 @@ function lerFabricantes(PDO $conexao) {
   }
   return $resultado;
 }
-
-$dados = lerFabricantes($conexao);
-var_dump($dados);
