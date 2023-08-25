@@ -2,8 +2,6 @@
 require_once '../src/funcoes-fabricantes.php';
 
 $listaDeFabricantes = lerFabricantes($conexao);
-
-//var_dump($listaDeFabricantes);
 ?>
 
 <!doctype html>

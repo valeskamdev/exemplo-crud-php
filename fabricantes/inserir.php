@@ -9,7 +9,10 @@ if(isset($_POST['inserir'])) {
   // pode ser assim também
   //  $nome = filter_var($_POST['nome'], FILTER_SANITIZE_SPECIAL_CHARS);
 
-  inserirFabricantes($conexao, $nome);
+  inserirFabricante($conexao, $nome);
+
+  // redirecionar para a página de visualização
+  header("location:visualizar.php");
 }
 ?>
 
