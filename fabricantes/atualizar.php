@@ -1,6 +1,9 @@
 <?php
+require_once "../src/funcoes-fabricantes.php";
+
 // obtendo e sanitizando o id que vem pela URL
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+$fabricante = lerUmFabricantes($conexao, $id);
 
 ?>
 
@@ -18,9 +21,11 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
   <hr>
 
   <form action="" method="post">
+    <!-- campo oculto usado apenas para registrar o id do fabricante -->
+    <input type="hidden" name="id" value="<?=$fabricante['nome']?>">
     <p>
       <label for="nome">Nome</label>
-      <input type="text" name="nome" id="nome" required>
+      <input type="text" name="nome" id="nome" value="<?=$fabricante['nome']?>" required>
     </p>
     <button type="submit" name="atualizar">Atualizar fabricante</button>
   </form>
