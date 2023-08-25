@@ -1,3 +1,16 @@
+<?php
+
+if(isset($_POST['inserir'])) {
+
+  // capturando o valor do campo nome e sanitizando
+  $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
+
+  // pode ser assim também
+  //  $nome = filter_var($_POST['nome'], FILTER_SANITIZE_SPECIAL_CHARS);
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,9 +27,9 @@
   <form action="" method="post">
     <p>
       <label for="nome">Nome</label>
-      <input type="text" name="nome" id="nome">
+      <input type="text" name="nome" id="nome" required>
     </p>
-    <button type="submit">Inserir fabricante</button>
+    <button type="submit" name="inserir">Inserir fabricante</button>
   </form>
 
 </body>
