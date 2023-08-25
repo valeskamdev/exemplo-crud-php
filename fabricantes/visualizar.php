@@ -2,6 +2,7 @@
 require_once '../src/funcoes-fabricantes.php';
 
 $listaDeFabricantes = lerFabricantes($conexao);
+$quantidadeDeFabricantes = count($listaDeFabricantes);
 ?>
 
 <!doctype html>
@@ -43,9 +44,8 @@ $listaDeFabricantes = lerFabricantes($conexao);
   <hr>
   <p><a href="inserir.php">Inserir novo fabricante</a></p>
   <h2>Lendo e carregando todos os fabricantes</h2>
-
   <table>
-    <caption>Lista de Fabricantes</caption>
+    <caption>Lista de Fabricantes: <b><?=$quantidadeDeFabricantes?></b></caption>
     <thead>
       <tr>
         <th>ID</th>
@@ -58,7 +58,7 @@ $listaDeFabricantes = lerFabricantes($conexao);
       <tr>
         <td><?=$fabricante['id']?></td>
         <td><?=$fabricante['nome']?></td>
-        <td><a href="#">Editar</a> <a href="#">Excluir</a></td>
+        <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a href="#">Excluir</a></td>
       </tr>
     <?php endforeach; ?>
     </tbody>
