@@ -19,3 +19,23 @@ function lerFabricantes(PDO $conexao) {
   }
   return $resultado;
 }
+
+function inserirFabricante(PDO $conexao, string $nome): void
+{
+
+  // :qualquerCoisa -> indica um "named parameter" (parâmetro nomeado)
+  // named parameters são usados para evitar SQL Injection
+  $sql = "INSERT INTO fabricantes (nome) VALUES (:nome)";
+
+  try {
+    $consulta = $conexao->prepare($sql);
+
+    // método bindValue(): Associa um valor a um parâmetro, neste caso, o parâmetro :nome
+    // que assumirá o valor da variável $nome, e será do tipo string (PDO::PARAM_STR)
+    $consulta->bindValue(":nome", $nome, PDO::PARAM_STR);
+
+    $consulta->execute();
+  } catch (Exception $e) {
+    die("Erro ao inserir: " . $e->getMessage());
+  }
+}

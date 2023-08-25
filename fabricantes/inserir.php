@@ -1,12 +1,15 @@
 <?php
 
 if(isset($_POST['inserir'])) {
+  require_once "../src/funcoes-fabricantes.php";
 
   // capturando o valor do campo nome e sanitizando
   $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 
   // pode ser assim também
   //  $nome = filter_var($_POST['nome'], FILTER_SANITIZE_SPECIAL_CHARS);
+
+  inserirFabricantes($conexao, $nome);
 }
 ?>
 
