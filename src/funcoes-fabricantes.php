@@ -20,6 +20,7 @@ function lerFabricantes(PDO $conexao) {
   return $resultado;
 }
 
+// Usada em  fabricantes/inserir.php
 function inserirFabricante(PDO $conexao, string $nome): void
 {
 
@@ -38,4 +39,26 @@ function inserirFabricante(PDO $conexao, string $nome): void
   } catch (Exception $e) {
     die("Erro ao inserir: " . $e->getMessage());
   }
+}
+
+// Usada em  fabricantes/atualizar.php
+function lerUmFabricantes(PDO $conexao, int $id) {
+  $sql = "SELECT * FROM  fabricantes WHERE id = :id";
+
+  try {
+    $consulta = $conexao->prepare($sql);
+
+    // Método bindValue(): Associa um valor a um parâmetro, neste caso, o parâmetro :id
+    // que assumirá o valor da variável $id, e será do tipo inteiro (PDO::PARAM_INT)
+    $consulta->bindValue(":id", $id, PDO::PARAM_INT);
+
+    $consulta->execute();
+
+    // Método fetch(): Retorna uma única linha do resultado como um array associativo
+    $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+
+  } catch (Exception $e) {
+    die("Erro ao carregar: " . $e->getMessage());
+  }
+  return $resultado;
 }

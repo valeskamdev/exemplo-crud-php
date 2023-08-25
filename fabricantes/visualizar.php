@@ -58,6 +58,7 @@ $quantidadeDeFabricantes = count($listaDeFabricantes);
       <tr>
         <td><?=$fabricante['id']?></td>
         <td><?=$fabricante['nome']?></td>
+        <!-- -->
         <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a href="#">Excluir</a></td>
       </tr>
     <?php endforeach; ?>

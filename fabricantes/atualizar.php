@@ -1,3 +1,9 @@
+<?php
+// obtendo e sanitizando o id que vem pela URL
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
