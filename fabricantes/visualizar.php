@@ -64,10 +64,12 @@ $quantidadeDeFabricantes = count($listaDeFabricantes);
       <tr>
         <td><?=$fabricante['id']?></td>
         <td><?=$fabricante['nome']?></td>
-        <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a></td>
+        <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a class="excluir" href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a></td>
       </tr>
     <?php endforeach; ?>
     </tbody>
   </table>
+
+  <script src="../js/confirma-exclusao.js"></script>
 </body>
 </html>
