@@ -44,6 +44,12 @@ $quantidadeDeFabricantes = count($listaDeFabricantes);
   <hr>
   <p><a href="inserir.php">Inserir novo fabricante</a></p>
   <h2>Lendo e carregando todos os fabricantes</h2>
+
+   <!-- Se a variável status existir e for igual a sucesso -->
+  <?php if(isset($_GET["status"]) && $_GET["status"] === "sucesso") { ?>
+      <h2 style='color: green'>Fabricante atualizado com sucesso!</h2>
+  <?php } ?>
+
   <table>
     <caption>Lista de Fabricantes: <b><?=$quantidadeDeFabricantes?></b></caption>
     <thead>
@@ -58,8 +64,7 @@ $quantidadeDeFabricantes = count($listaDeFabricantes);
       <tr>
         <td><?=$fabricante['id']?></td>
         <td><?=$fabricante['nome']?></td>
-        <!-- -->
-        <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a href="#">Excluir</a></td>
+        <td><a href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a> <a href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a></td>
       </tr>
     <?php endforeach; ?>
     </tbody>

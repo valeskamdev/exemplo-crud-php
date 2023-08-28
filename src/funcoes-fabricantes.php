@@ -75,3 +75,16 @@ function atualizarFabricante(PDO $conexao, string $nome, int $id) : void {
     die("Erro ao atualizar: " . $e->getMessage());
   }
 }
+
+function deletarFabricante(PDO $conexao, int $id): void
+{
+  $sql = "DELETE FROM fabricantes WHERE id = :id";
+
+  try {
+    $consulta = $conexao->prepare($sql);
+    $consulta->bindValue(":id", $id, PDO::PARAM_INT);
+    $consulta->execute();
+  } catch (Exception $e) {
+    die("Erro ao deletar: " . $e->getMessage());
+  }
+}
