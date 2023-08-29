@@ -3,7 +3,6 @@ require_once "../src/funcoes-produtos.php";
 require_once "../src/utilities/funcoes-utilitarias.php";
 
 $produtos = lerProdutos($conexao);
-
 ?>
 
 
@@ -45,15 +44,19 @@ $produtos = lerProdutos($conexao);
   <h2>Lendo e carregando todos os produtos</h2>
 
   <p><a href="inserir.php">Inserir novo produto</a></p>
+  <p>Quantidade de produtos</p>
 
   <div class="produtos">
     <?php foreach ($produtos as $produto) : ?>
     <article class="produto">
-      <h3><?=$produto["nome"]?></h3>
+      <h3><?=$produto["produto"]?></h3>
+      <h4><?=$produto["fabricante"]?></h4>
       <p><b>Preço:</b> R$<?=formatarPreco($produto["preco"])?></p>
       <p><b>Quantidade:</b> <?=$produto["quantidade"]?></p>
+      <h5>Preço total: <?=calcularTotal($produto["preco"], $produto["quantidade"]);?></h5>
     </article>
-    <?php endforeach; ?>
+    <?php endforeach;
+    ?>
 
   </div>
 
