@@ -1,3 +1,12 @@
+<?php
+require_once "../src/funcoes-produtos.php";
+require_once "../src/utilities/funcoes-utilitarias.php";
+
+$produtos = lerProdutos($conexao);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,14 +23,17 @@
     .produtos {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 30px;
       width: 80%;
       margin: auto;
+      font-family: "Agency FB";
+      font-size: 1.5rem;
     }
 
     .produto {
       padding: 1rem;
-      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      box-shadow: rgb(98, 69, 175) 0px 0px 0px 3px, rgb(186, 141, 255) 0px 0px 0px 6px;
+      width: 250px;
 
     }
   </style>
@@ -35,20 +47,13 @@
   <p><a href="inserir.php">Inserir novo produto</a></p>
 
   <div class="produtos">
-
+    <?php foreach ($produtos as $produto) : ?>
     <article class="produto">
-      <h3>Nome do produto...</h3>
-      <p><b>Preço:</b>......</p>
-      <p><b>Quantidade</b>...</p>
-      <p><b>Descrição</b>...</p>
+      <h3><?=$produto["nome"]?></h3>
+      <p><b>Preço:</b> R$<?=formatarPreco($produto["preco"])?></p>
+      <p><b>Quantidade:</b> <?=$produto["quantidade"]?></p>
     </article>
-
-    <article class="produto">
-      <h3>Nome do produto...</h3>
-      <p><b>Preço:</b>......</p>
-      <p><b>Quantidade</b>...</p>
-      <p><b>Descrição</b>...</p>
-    </article>
+    <?php endforeach; ?>
 
   </div>
 
