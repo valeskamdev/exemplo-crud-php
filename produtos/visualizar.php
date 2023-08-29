@@ -53,6 +53,7 @@ $produtos = lerProdutos($conexao);
       <h4><?=$produto["fabricante"]?></h4>
       <p><b>Preço:</b> R$<?=formatarPreco($produto["preco"])?></p>
       <p><b>Quantidade:</b> <?=$produto["quantidade"]?></p>
+      <h5>Preço total: <?=formatarPreco($produto["total"]);?></h5>
       <h5>Preço total: <?=calcularTotal($produto["preco"], $produto["quantidade"]);?></h5>
     </article>
     <?php endforeach;
