@@ -2,7 +2,8 @@
 require_once "conecta.php";
 
 // Usada em fabricantes/visuzlizar.php
-function lerFabricantes(PDO $conexao) {
+function lerFabricantes(PDO $conexao) : array
+{
   $sql = "SELECT * FROM  fabricantes ORDER BY nome";
 
   try {
@@ -42,7 +43,8 @@ function inserirFabricante(PDO $conexao, string $nome): void
 }
 
 // Usada em  fabricantes/atualizar.php
-function lerUmFabricantes(PDO $conexao, int $id) {
+function lerUmFabricantes(PDO $conexao, int $id) : array
+{
   $sql = "SELECT * FROM  fabricantes WHERE id = :id";
 
   try {

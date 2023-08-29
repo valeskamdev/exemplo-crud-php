@@ -29,7 +29,7 @@
 <body>
   <h1>Produtos | SELECT <a href="../index.php">Home</a></h1>
 
-  <hr>
+    <hr>
   <h2>Lendo e carregando todos os produtos</h2>
 
   <p><a href="inserir.php">Inserir novo produto</a></p>
