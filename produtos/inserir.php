@@ -1,7 +1,22 @@
 <?php
 require_once "../src/funcoes-fabricantes.php";
+require_once "../src/funcoes-produtos.php";
 
 $fabricantes = lerFabricantes($conexao);
+
+if (isset($_POST["inserir"])) {
+
+  $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
+  $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+  $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT);
+  // pegaremos o value, que é o id do fabricante
+  $fabricanteId = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
+  $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_SPECIAL_CHARS);
+
+  inserirProduto($conexao, $nome, $preco, $quantidade, $fabricanteId, $descricao);
+
+  header("location:visualizar.php");
+}
 ?>
 
 <!doctype html>
@@ -44,7 +59,7 @@ $fabricantes = lerFabricantes($conexao);
       <label for="descricao">Descricao</label> <br>
       <textarea name="descricao" id="descricao" cols="27" rows="3"></textarea>
     </p>
-    <button type="submit">Inserir produto </button>
+    <button type="submit" name="inserir">Inserir produto </button>
   </form>
 
   <hr>
