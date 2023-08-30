@@ -53,3 +53,19 @@ function inserirProduto(
     die("Erro ao inserir: " . $e->getMessage());
   }
 }
+
+function lerUmProduto (PDO $conexao, int $id) : array
+{
+  $query = "SELECT * FROM produtos WHERE id = :id";
+
+  try {
+    $conexao = $conexao->prepare($query);
+    $conexao->bindValue(":id", $id, PDO::PARAM_INT);
+    $conexao->execute();
+    $resultado = $conexao->fetch(PDO::FETCH_ASSOC);
+  } catch (Exception $e) {
+    die("Erro ao carregar: " . $e->getMessage());
+  }
+  return $resultado;
+}
+

@@ -25,15 +25,21 @@ $produtos = lerProdutos($conexao);
       gap: 30px;
       width: 80%;
       margin: auto;
-      font-family: "Agency FB";
-      font-size: 1.5rem;
+      font-family: "Poor Richard";
+      font-size: 1.6rem;
+      font-weight: bold;
     }
 
     .produto {
       padding: 1rem;
       box-shadow: rgb(98, 69, 175) 0px 0px 0px 3px, rgb(186, 141, 255) 0px 0px 0px 6px;
-      width: 250px;
+      width: 350px;
 
+    }
+
+    p {
+      display: flex;
+      justify-content: space-between;
     }
   </style>
 </head>
@@ -53,8 +59,10 @@ $produtos = lerProdutos($conexao);
       <h4><?=$produto["fabricante"]?></h4>
       <p><b>Preço:</b> R$<?=formatarPreco($produto["preco"])?></p>
       <p><b>Quantidade:</b> <?=$produto["quantidade"]?></p>
-      <h5>Preço total: <?=formatarPreco($produto["total"]);?></h5>
-      <h5>Preço total: <?=calcularTotal($produto["preco"], $produto["quantidade"]);?></h5>
+      <p><b>Preço total:</b> <?=formatarPreco($produto["total"]);?></p>
+<!--  <h5>Preço total: --><?php //=calcularTotal($produto["preco"], $produto["quantidade"]);?><!--</h5>-->
+      <hr>
+      <p><a href="atualizar.php?id=<?=$produto["id"]?>">Editar</a> <a href="excluir.php?id=<?=$produto["id"]?>">Excluir</a></p>
     </article>
     <?php endforeach;
     ?>
