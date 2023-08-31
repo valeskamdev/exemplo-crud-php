@@ -62,12 +62,14 @@ $produtos = lerProdutos($conexao);
       <p><b>Preço total:</b> <?=formatarPreco($produto["total"]);?></p>
 <!--  <h5>Preço total: --><?php //=calcularTotal($produto["preco"], $produto["quantidade"]);?><!--</h5>-->
       <hr>
-      <p><a href="atualizar.php?id=<?=$produto["id"]?>">Editar</a> <a href="excluir.php?id=<?=$produto["id"]?>">Excluir</a></p>
+      <p><a href="atualizar.php?id=<?=$produto["id"]?>">Editar</a> <a class="excluir" href="excluir.php?id=<?=$produto["id"]?>">Excluir</a></p>
     </article>
     <?php endforeach;
     ?>
 
   </div>
+
+  <script src="../js/confirma-exclusao.js"></script>
 
 </body>
 </html>

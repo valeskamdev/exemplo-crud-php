@@ -106,3 +106,15 @@ function atualizarProduto(
     }
 }
 
+function excluirProduto(PDO $conexao, int $id): void
+{
+    $query = "DELETE FROM produtos WHERE id = :id";
+
+    try {
+        $consulta = $conexao->prepare($query);
+        $consulta->bindValue(":id", $id, PDO::PARAM_INT);
+        $consulta->execute();
+    } catch (Exception $e) {
+        die("Erro ao excluir: " . $e->getMessage());
+    }
+}
